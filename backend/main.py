@@ -1,9 +1,13 @@
 from flask import Flask, request
 from flask_cors import CORS
-api = Flask(__name__)
-CORS(api)
+app = Flask(__name__)
+CORS(app)
 
 
-@api.route("/data", methods=["POST"])
-def send_data():
-    return 
+@app.route("/data", methods=["POST"])
+def groups():
+    return {"groups": ["member1", "member2", "member3"]}
+
+
+if __name__ == "__main__":
+    app.run(debug = True)
