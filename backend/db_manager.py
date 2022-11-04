@@ -8,7 +8,7 @@ cur = conn.cursor()
 
 #create the three tables
 cur.execute("CREATE TABLE user(id, isAdmin, location, name, email, tags, count_of_event)")
-cur.execute("CREATE TABLE groups(group_id, user_id,  chat_messages, group_name)")
+cur.execute("CREATE TABLE groups(group_id, user_id, group_name)")
 cur.execute("CREATE TABLE chats(id, user_id,message)")
 
 
@@ -22,8 +22,8 @@ cur.execute("""
 # #fill dummy data
 cur.execute("""
     INSERT INTO groups VALUES
-        (1, 1, "HI i am a user", "Motherhood"),
-        (1, 2, "HI i am a user", "Motherhood")
+        (1, 1, "Motherhood"),
+        (1, 2, "Motherhood")
 """)
 
 
@@ -36,25 +36,6 @@ cur.execute("""
 
 conn.commit()
 conn.close()
-
-
-
-
-
-
-
-
-# CREATE TABLE "users" (
-# 	"id"	INTEGER NOT NULL,
-# 	"isAdmin"	NUMERIC NOT NULL,
-# 	"location"	TEXT,
-# 	"name"	TEXT,
-# 	"email"	TEXT,
-# 	"password"	TEXT,
-# 	"te"	INTEGER,
-# 	PRIMARY KEY("id")
-# );
-
 
 
 
