@@ -23,20 +23,19 @@ cur.execute("""
 cur.execute("""
     INSERT INTO groups VALUES
         (1, 1, "HI i am a user", "Motherhood"),
-        (1, 2, "HI i am a user", "Motherhood"),
+        (1, 2, "HI i am a user", "Motherhood")
 """)
 
 
-
-# cur.execute("""
-#     INSERT INTO chats VALUES
-#         (1, 1, "HI i am a user", "Motherhood"),
-#         (1, 2, "HI i am a user", "Motherhood"),
-# """)
-
+cur.execute("""
+    INSERT INTO chats VALUES
+        (1, 1, "HI i am a user"),
+        (1, 2, "HI i am a user")
+""")
 
 
-
+conn.commit()
+conn.close()
 
 
 
