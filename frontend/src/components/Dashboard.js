@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import Groups from "./Groups";
 
 const Dashboard = (props) => {
   return (
-    <Container>
+    <Container className="h-100vh">
       <Row>
         <Col className="d-flex flex-column h-100 justify-content-center">
           <Row>
@@ -13,7 +14,7 @@ const Dashboard = (props) => {
           </Row>
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-              <Card.Title>Recommended</Card.Title>
+              <Card.Title>Rewards</Card.Title>
             </Card>
           </Row>
         </Col>
@@ -26,13 +27,17 @@ const Dashboard = (props) => {
 
         <Col className="d-flex flex-column justify-content-center">
         <Row>
-            <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-              <Card.Title>Recommended</Card.Title>
-            </Card>
+            <Groups />
+            {/* <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
+              <Card.Title>Groups</Card.Title>
+              <Card.Body>
+                <Groups />
+              </Card.Body>
+            </Card> */}
           </Row>
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-              <Card.Title>Recommended</Card.Title>
+              <Card.Title>Chats</Card.Title>
             </Card>
           </Row>
         </Col>
