@@ -1,6 +1,19 @@
 import React from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, ListGroup } from "react-bootstrap";
+import DirectoryItem from "../components/DirectoryItem";
 import NavbarComponent from "../components/Navbar";
+
+const sample = [
+    {
+        name: "Alexandra Mauer"
+    },
+    {
+        name: "Jacob Miller"
+    },
+    {
+        name: "John Smith"
+    },
+]
 
 const DirectoryScreen = () => {
   return (
@@ -17,6 +30,12 @@ const DirectoryScreen = () => {
           />
           <Button variant="outline-success">Search</Button>
         </Form>
+
+        <ListGroup className="mt-2">
+          {sample.map(user => {
+            return <DirectoryItem name={user.name} />
+          })}
+        </ListGroup>
       </Container>
     </>
   );

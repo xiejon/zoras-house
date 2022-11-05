@@ -19,7 +19,7 @@ const Dashboard = (props) => {
           </Row>
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-              <Card.Title>Rewards</Card.Title>
+              <Card.Title>Zora Tokens</Card.Title>
               <ProgressBar className="w-100" now={now} label={`${now} visits`} max="20"/>
             </Card>
           </Row>
