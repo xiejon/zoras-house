@@ -16,6 +16,9 @@ const NavbarComponent = (props) => {
         <Nav className="me-auto">
           <Nav.Link href="/home">Groups</Nav.Link>
         </Nav>
+        <Nav className="me-auto">
+          <Nav.Link href="/explore">Explore</Nav.Link>
+        </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             Signed in as:{" "}

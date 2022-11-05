@@ -10,24 +10,6 @@ import {
   getGroupsError,
 } from "../redux/groupsSlice";
 
-const sample = [
-  {
-    group_id: 0,
-    user_id: 0,
-    group_name: "Women In Tech",
-  },
-  {
-    group_id: 1,
-    user_id: 1,
-    group_name: "Engineers",
-  },
-  {
-    group_id: 2,
-    user_id: 2,
-    group_name: "React Devs",
-  },
-];
-
 const Groups = () => {
   const dispatch = useDispatch();
   const groups = useSelector(getAllGroups);
