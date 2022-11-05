@@ -5,9 +5,9 @@ def read_word2vec_model(filename):
     try:
         #print("Starting to load the model in ", filename, "...")
         model = KeyedVectors.load_word2vec_format(filename, binary=False)
-        print("Model loaded.\n")
+        #print("Model loaded.\n")
     except FileNotFoundError as e:
-        print(f"  [WARNING]    The file {filename} was not found.     [WARNING]  ")
+        #print(f"  [WARNING]    The file {filename} was not found.     [WARNING]  ")
         return None   # returning a placeholder, not a model
 
     # let's print some attributes
