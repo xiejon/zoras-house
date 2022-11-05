@@ -27,11 +27,7 @@ const Groups = () => {
     if (currUserStatus === "succeeded") {
         userGroups = currUser.user_groups
     }
-
-    useEffect(() => {
-        console.log(currUser)
-    }, [])
-
+    
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
       <Card.Title className="mt-2 d-flex align-items-center justify-content-center">
