@@ -49,16 +49,25 @@ def pull_users_by_groups(groups):
 # returns all users who have specific list of tags
 def pull_users_by_tags(tags):
     res = None
+    listOfUsers = []
     if not tags:
         res = cur.execute("SELECT name FROM user")
+        for row in res:
+            listOfUsers.append(row[0])
     else:
-        tags.sort()
-        res = cur.execute("SELECT name FROM user WHERE tags = {}".format(tags))
-    listOfUsers = []
-    for row in res:
-        listOfUsers.append(row[0])
+        res = cur.execute("SELECT name, tags FROM user")
+        for row in res:
+            count = 0
+            tmp = row[-1].split(", ")
+            for tag in tmp:
+                if tag in tags:
+                    count += 1
+            if count >= len(tags):
+                listOfUsers.append(row[0])
     return listOfUsers
+            
 
 
 list_of_chats = pull_all_users()
-print(json.dumps(list_of_chats))
+list_of_users = pull_users_by_tags([])
+print(json.dumps(list_of_users))

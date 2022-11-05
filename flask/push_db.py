@@ -21,7 +21,7 @@ def add_user_to_group(user_id, group):
     if res.fetchall()[0] == 0:
         return
     for row in res:
-        cur.execute("INSERT INTO group VALUES ({})".format(",".join([res[0], user_id, group])))
+        cur.execute("INSERT INTO group VALUES ({})".format(", ".join([res[0], user_id, group])))
         break
 
 def login(email, password):
