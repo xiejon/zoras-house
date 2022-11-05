@@ -1,34 +1,34 @@
 import React from "react";
-import GroupItem from "./GroupItem";
 import { Card } from "react-bootstrap";
+import GroupItem from "./GroupItem";
 
 const sample = [
   {
     group_id: 0,
     user_id: 0,
-    group_name: "Women In Tech",
+    group_name: "Entrepreneurs",
   },
   {
     group_id: 1,
     user_id: 1,
-    group_name: "Engineers",
+    group_name: "Business Owners",
   },
   {
     group_id: 2,
     user_id: 2,
-    group_name: "React Devs",
+    group_name: "Doctors",
   },
 ];
 
-const Groups = () => {
+const RecommendedGroups = (props) => {
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Title className="d-flex align-items-center justify-content-center">Groups</Card.Title>
+      <Card.Title>Recommended</Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
         {sample.map((group) => {
           return (
-            <GroupItem 
-            key={group.group_id}
+            <GroupItem
+              key={group.group_id}
               userId={group.user_id}
               groupId={group.group_id}
               groupName={group.group_name}
@@ -40,4 +40,4 @@ const Groups = () => {
   );
 };
 
-export default Groups;
+export default RecommendedGroups;
