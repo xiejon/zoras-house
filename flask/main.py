@@ -31,7 +31,17 @@ def login():
 
         user_chats = pull_data.pull_user_chats(user_id)
         user_info = pull_data.pull_user_info(user_id)
-        
+
+        listGroupsC = listOfGroups.copy()
+
+        recGroups = []
+        for d in listGroupsC:
+            if d['group_name'] == "motherhood" or d['group_name'] == "expectant mother of twins" or d['group_name'] == "mom" or d['group_name'] == "mother":
+                recGroups.append('mother')
+            elif d['group_name'] == "master"
+            
+        # groupBank = ['student', 'entrepreneur', 'career', 'single', 'married', 'mother', 'hobby', 'finance', 'identity']
+
         response_body = {
             "username": out[0],
             "password": out[1],
