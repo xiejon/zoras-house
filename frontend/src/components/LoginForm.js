@@ -3,9 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { setUser } from "../redux/usersSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -15,10 +17,10 @@ const LoginForm = () => {
     try {
       const { data } = await axios.post("http://127.0.0.1:5000/login_path", {
         username: email,
-        password: password
+        password: password,
       });
-
-      setUser(data);
+      console.log(data);
+      dispatch(setUser(data));
       navigate("/home");
     } catch (err) {
       alert("Invalid email or password");

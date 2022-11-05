@@ -21,8 +21,9 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-        state.currentUser = action.payload
-    }
+        console.log(action.payload)
+      state.currentUser = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -40,10 +41,11 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setUser } = usersSlice.actions
+export const { setUser } = usersSlice.actions;
 
 export const getAllUsers = (state) => state.users.users;
 export const getUsersStatus = (state) => state.users.status;
 export const getUsersError = (state) => state.users.error;
+export const getCurrUser = (state) => state.users.currentUser;
 
 export default usersSlice.reducer;
