@@ -3,7 +3,11 @@ from gensim.models import KeyedVectors
 # build model from word2vec_model.txt
 def read_word2vec_model(filename):  
     try:
+<<<<<<< HEAD
         #print("Starting to load the model in ", filename, "...")
+=======
+        print("Starting to load the model in ", filename, "...")
+>>>>>>> 47fb2d5 (new)
         model = KeyedVectors.load_word2vec_format(filename, binary=False)
         print("Model loaded.\n")
     except FileNotFoundError as e:
@@ -11,10 +15,17 @@ def read_word2vec_model(filename):
         return None   # returning a placeholder, not a model
 
     # let's print some attributes
+<<<<<<< HEAD
     # print("The model built is", model, "\n")
     # print("The vocabulary has", model.vectors.shape[0], "words")   # The vocabulary has 43981 words
     # print("Each word is a vector of size", model.vector_size)  # 300
     # print("\nTry m.get_vector('python') to see a the vector for 'python'!\n")
+=======
+    print("The model built is", model, "\n")
+    print("The vocabulary has", model.vectors.shape[0], "words")   # The vocabulary has 43981 words
+    print("Each word is a vector of size", model.vector_size)  # 300
+    print("\nTry m.get_vector('python') to see a the vector for 'python'!\n")
+>>>>>>> 47fb2d5 (new)
     model.fill_norms()  # freezes the model, m, as-is (no more training)
     # we weren't going to train more, so no worries (in week7, at least)
     return model
@@ -36,7 +47,11 @@ def mostSimilar(initial_words, key):
     LoS = []
     LoW = []
     maxMatch = ["", 0]
+<<<<<<< HEAD
     for w in initial_words.split():
+=======
+    for w in initial_words:
+>>>>>>> 47fb2d5 (new)
         if w in m:  # is the word, w present in the vocabulary?
             similarity = m.similarity(key,w)
 
@@ -51,6 +66,7 @@ def mostSimilar(initial_words, key):
             pass
             #print(f"  __  {w}  __ was not in the vocabulary", )   # not every word will be present
 
+<<<<<<< HEAD
     values = list(zip(LoS, LoW))
     return values
 
@@ -86,3 +102,10 @@ def mostMostSimilar(initial_words, listOfGroups):
 # print(mostMostSimilar('just started a new job', ['entrepreneur', 'family', 'mother', 'career']))
 # print(mostMostSimilar('new business owner', ['entrepreneur', 'family', 'mother', 'career']))
 # print(mostMostSimilar('just started a new job', ['entrepreneur', 'family', 'mother', 'career']))
+=======
+    # print(f"LoS is {LoS}")
+    # print(f"LoW is {LoW}")
+    print(maxMatch[0])
+
+mostSimilar()
+>>>>>>> 47fb2d5 (new)
