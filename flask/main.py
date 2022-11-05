@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import pull_data
 import push_db
+from naturallanguage import mostMostSimilar
 
 app = Flask(__name__)
 CORS(app)
@@ -33,14 +34,16 @@ def login():
         #     elif d['group_name'] == "master"
             
         # groupBank = ['student', 'entrepreneur', 'career', 'single', 'married', 'mother', 'hobby', 'finance', 'identity']
-
+        list_of_categories =  ['entrepreneur', 'family', 'mother', 'career', "technology", "data science"]
+        
         response_body = {
             "username": out[0],
             "password": out[1],
             "user_id": out[2],
             "user_groups": listOfGroups,
             "user_chats": user_chats,
-            "user_info": user_info
+            "user_info": user_info,
+            "list_of_categories": list_of_categories
         }
         
         return response_body,200
@@ -104,6 +107,14 @@ def get_profile_groups():
     }
     
     return response
+
+
+@app.route("/recommendations", methods = ["GET", "POST"])
+def get_and_post_recommendations():
+    read_in = request.json
+    
+    return 
+    
 
 
 if __name__ == "__main__":

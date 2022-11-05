@@ -82,7 +82,7 @@ def mostMostSimilar(initial_words, listOfGroups):
 # m = read_word2vec_model(filename = "./word2vec_model.txt")
 # m
 
-# print(mostMostSimilar('adopted twins in my life', ['entrepreneur', 'family', 'mother', 'career']))
+print(mostMostSimilar('adopted twins in my life', ['entrepreneur', 'family', 'mother', 'career']))
 # print(mostMostSimilar('just started a new job', ['entrepreneur', 'family', 'mother', 'career']))
 # print(mostMostSimilar('new business owner', ['entrepreneur', 'family', 'mother', 'career']))
 # print(mostMostSimilar('just started a new job', ['entrepreneur', 'family', 'mother', 'career']))
