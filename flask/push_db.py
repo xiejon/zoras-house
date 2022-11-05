@@ -26,7 +26,9 @@ def add_user_to_group(user_id, group):
 def login(email, password):
     res = cur.execute("SELECT * WHERE user.email = '{}' & user.password = '{}'".format(email, password))
     if res.fetchall()[0] == 0:
-        return "/"
-    return "/homepage"
+        raise Exception()
+    for row in res:
+        return {"email": res[4], "password": res[5]}
+    
 
     
