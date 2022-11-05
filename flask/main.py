@@ -15,13 +15,10 @@ def login():
     user_name = read_in["username"]
     pwrd = read_in["password"]
     out = push_db.login(user_name,pwrd)
-    response_body = {
-        
-        "resp":out
-        
-    }
-    return response_body
-
+    if out == -1:
+        return "", 401
+    else:
+        return out, 200
 
 #this function will receive inputs from the front end and return 
 @app.route("/search", methods = ["GET", "POST"])
