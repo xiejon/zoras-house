@@ -21,10 +21,7 @@ def get_users_and_groups(user_id):
     for row in res:
         list_of_groups.append(row)
     return list_of_groups
-    
-    
-    
-
+     
 
 def pull_user_groups(user_id):
     list_of_groups =[]
@@ -71,7 +68,7 @@ def pull_users_by_tags(tags):
             count = 0
             tmp = row[-1].split(", ")
             for tag in tmp:
-                if tag in tags:
+                if tag.lower() in tags:
                     count += 1
             if count >= len(tags):
                 listOfUsers.append(row[0])

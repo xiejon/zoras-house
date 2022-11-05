@@ -68,7 +68,7 @@ def get_user_data():
     
     return response_body
 
-@app.route("/filteredUsers", methods=["GET, POST"])
+@app.route("/filteredUsers", methods=["POST"])
 def get_filterd_users():
     read_filters = request.json["tags"]
     listOfUserIds = pull_data.pull_users_by_tags(read_filters)
