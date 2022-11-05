@@ -26,11 +26,11 @@ def login():
 
         listGroupsC = listOfGroups.copy()
 
-        recGroups = []
-        for d in listGroupsC:
-            if d['group_name'] == "motherhood" or d['group_name'] == "expectant mother of twins" or d['group_name'] == "mom" or d['group_name'] == "mother":
-                recGroups.append('mother')
-            elif d['group_name'] == "master"
+        # recGroups = []
+        # for d in listGroupsC:
+        #     if d['group_name'] == "motherhood" or d['group_name'] == "expectant mother of twins" or d['group_name'] == "mom" or d['group_name'] == "mother":
+        #         recGroups.append('mother')
+        #     elif d['group_name'] == "master"
             
         # groupBank = ['student', 'entrepreneur', 'career', 'single', 'married', 'mother', 'hobby', 'finance', 'identity']
 
