@@ -9,7 +9,12 @@ CORS(app)
 #this function will receive inputs from the front end and return 
 @app.route("/search", methods = ["GET", "POST"])
 def get_search_results():
-  return  
+  out = pull_data.pull_all_users()
+  response_body ={
+      "data": out
+  }
+  
+  return response_body
     
 
 
