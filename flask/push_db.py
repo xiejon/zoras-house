@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('database.db')
+conn = sqlite3.connect('database.db', check_same_thread=False)
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
@@ -24,9 +24,10 @@ def add_user_to_group(user_id, group):
         break
 
 def login(email, password):
-    res = cur.execute("SELECT * WHERE user.email = '{}' & user.password = '{}'".format(email, password))
-    if res.fetchall()[0] == 0:
+    res = cur.execute("SELECT * FROM user WHERE user.email = '{}' & user.password = '{}'".format(email, password))
+    if res.fetchall() == 0:
         raise Exception()
+    print(res)
     for row in res:
         return {"email": res[4], "password": res[5]}
     

@@ -2,9 +2,26 @@ from flask import Flask, request
 from flask_cors import CORS
 import pull_data
 import json
+import requests
+import push_db
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route("/login_path", methods = ["GET", "POST"])
+def login():
+    read_in = request.json
+    user_name = read_in["username"]
+    pwrd = read_in["password"]
+    out = push_db.login(user_name,pwrd)
+    response_body = {
+        
+        "resp":out
+        
+    }
+    return response_body
+
 
 #this function will receive inputs from the front end and return 
 @app.route("/search", methods = ["GET", "POST"])
