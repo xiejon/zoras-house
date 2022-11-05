@@ -37,7 +37,6 @@ const DirectoryScreen = () => {
     }
   }, [dispatch, usersStatus]);
 
-//   user(id, isAdmin, location, name, email, tags, count_of_event)"
   return (
     <>
       <NavbarComponent />
