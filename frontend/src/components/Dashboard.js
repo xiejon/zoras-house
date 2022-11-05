@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
 import Groups from "./Groups";
 import RecommendedGroups from "./RecommendedGroups";
 import "./Dashboard.css";
+import CalendarComponent from "./CalendarComponent";
 
 const Dashboard = (props) => {
   const now = 10;
@@ -13,7 +14,7 @@ const Dashboard = (props) => {
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
               <Card.Title>Upcoming Events</Card.Title>
-              
+              <CalendarComponent />
             </Card>
           </Row>
           <Row>

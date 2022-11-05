@@ -12,14 +12,14 @@ const NavbarComponent = (props) => {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/">User Dashboard</Navbar.Brand>
+        <Navbar.Brand href="/home">Zora's House</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/tasks">Tasks</Nav.Link>
+          <Nav.Link href="/home">Groups</Nav.Link>
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             Signed in as:{" "}
-            <a href="/login" style={{ color: "white" }}>
+            <a href="/home" style={{ color: "white" }}>
               Jane Doe
             </a>
           </Navbar.Text>
