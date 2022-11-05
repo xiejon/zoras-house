@@ -2,6 +2,10 @@ import sqlite3
 conn = sqlite3.connect('database.db', check_same_thread=False)
 cur = conn.cursor()
 
+#this function will output all users:
+def pull_all_users():
+    res = cur.execute("SELECT * from USER")
+    print(res)
 
 
 def pull_user_groups(user_id):
