@@ -7,6 +7,17 @@ app = Flask(__name__)
 CORS(app)
 
 
+#this function will receive inputs from the front end and return 
+@app.route("/search", methods = ["GET", "POST"])
+def get_search_results():
+    out = pull_data.pull_all_users()
+    response_body = { 
+        "users": out       
+    }
+
+    return response_body
+
+
 @app.route("/data", methods=["GET","POST"])
 def get_user_data():
     user_id = 1
