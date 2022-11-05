@@ -9,6 +9,7 @@ import {
   getUsersStatus,
   getUsersError,
 } from "../redux/usersSlice";
+import axios from "axios";
 
 const sample = [
   {
@@ -31,31 +32,51 @@ const DirectoryScreen = () => {
   const usersStatus = useSelector(getUsersStatus);
   const usersError = useSelector(getUsersError);
 
+  const [input, setInput] = React.useState("");
+
   useEffect(() => {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
     }
   }, [dispatch, usersStatus]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+        const result = await axios.post("http://127.0.0.1:5000/filteredUsers", {
+            tags: [input]
+        })
+        console.log(result)
+    } catch (err) {
+        console.log(err.message)
+    }
+  };
+
   return (
     <>
       <NavbarComponent />
       <Container className="d-flex flex-column align-items-center justify-content-center">
         <h1 className="mt-2">Explore</h1>
-        <Form className="d-flex">
+        <Form className="d-flex" onSubmit={handleSubmit}>
           <Form.Control
             type="search"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-success" type="submit">
+            Search
+          </Button>
         </Form>
 
         <ListGroup className="mt-2">
-          {usersStatus === "succeeded" && users.map((user) => {
-            return <DirectoryItem key={user[0]} name={user[3]} />;
-          })}
+          {usersStatus === "succeeded" &&
+            users.map((user) => {
+              return <DirectoryItem key={user[0]} name={user[3]} />;
+            })}
         </ListGroup>
       </Container>
     </>
