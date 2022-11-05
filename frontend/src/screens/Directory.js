@@ -32,6 +32,9 @@ const DirectoryScreen = () => {
   const usersStatus = useSelector(getUsersStatus);
   const usersError = useSelector(getUsersError);
 
+  const [isFilteredSearch, setIsFilteredSearch] = React.useState(false);
+  const [filteredUsers, setFilteredUsers] = React.useState([]);
+
   const [input, setInput] = React.useState("");
 
   useEffect(() => {
@@ -42,16 +45,29 @@ const DirectoryScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    try {
-        const result = await axios.post("http://127.0.0.1:5000/filteredUsers", {
-            tags: [input]
-        })
-        console.log(result)
-    } catch (err) {
-        console.log(err.message)
-    }
+
+    axios
+      .post("http://127.0.0.1:5000/filteredUsers", {
+        tags: [input],
+      })
+      .then((res) => {
+        setIsFilteredSearch(true);
+        setFilteredUsers(res.data);
+      });
   };
+
+  let content;
+  if (isFilteredSearch) {
+    content = filteredUsers.map((user) => {
+      return <DirectoryItem key={user[0]} name={user[3]} />;
+    });
+  } else {
+    content =
+      usersStatus === "succeeded" &&
+      users.map((user) => {
+        return <DirectoryItem key={user[0]} name={user[3]} />;
+      });
+  }
 
   return (
     <>
@@ -73,10 +89,7 @@ const DirectoryScreen = () => {
         </Form>
 
         <ListGroup className="mt-2">
-          {usersStatus === "succeeded" &&
-            users.map((user) => {
-              return <DirectoryItem key={user[0]} name={user[3]} />;
-            })}
+          {content}
         </ListGroup>
       </Container>
     </>
