@@ -35,6 +35,7 @@ def pull_user_info(user_id):
     res = cur.execute("SELECT * from USER where id = {}".format(user_id))
     for row in res:
         return list(row)
-    
+
+
 list_of_chats = pull_all_users()
 print(json.dumps(list_of_chats))

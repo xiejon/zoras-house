@@ -2,9 +2,23 @@ from flask import Flask, request
 from flask_cors import CORS
 import pull_data
 import json
+import requests
+import push_db
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route("/login_path", methods = ["GET", "POST"])
+def login():
+    read_in = request.json
+    user_name = read_in["username"]
+    pwrd = read_in["password"]
+    out = push_db.login(user_name,pwrd)
+    if out == -1:
+        return "", 401
+    else:
+        return out, 200
 
 #this function will receive inputs from the front end and return 
 @app.route("/search", methods = ["GET", "POST"])
@@ -20,8 +34,8 @@ def get_search_results():
 
 @app.route("/data", methods=["GET","POST"])
 def get_user_data():
-    user_id = 1
-
+    #user_id = 1
+    user_id = int(request.json["user_id"])
     listOfGroups = []
     user_groups = pull_data.pull_user_groups(user_id)
     for group in user_groups:
