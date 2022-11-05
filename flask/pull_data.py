@@ -36,6 +36,29 @@ def pull_user_info(user_id):
     for row in res:
         return list(row)
 
+# returns all users who fall under specific list of groups
+def pull_users_by_groups(groups):
+    listOfUsers = []
+    for i in range(len(groups)):
+        res = cur.execute("SELECT name FROM groups, user WHERE user.id = groups.user_id and groups.group_name = '{}'".format(groups[i]))
+        result = res.fetchone()
+        if result:
+            listOfUsers.append(result[0])
+    return listOfUsers
+
+# returns all users who have specific list of tags
+def pull_users_by_tags(tags):
+    res = None
+    if not tags:
+        res = cur.execute("SELECT name FROM user")
+    else:
+        tags.sort()
+        res = cur.execute("SELECT name FROM user WHERE tags = {}".format(tags))
+    listOfUsers = []
+    for row in res:
+        listOfUsers.append(row[0])
+    return listOfUsers
+
 
 list_of_chats = pull_all_users()
 print(json.dumps(list_of_chats))

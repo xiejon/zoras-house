@@ -13,6 +13,7 @@ def add_tags_to_user(user_id, tags):
     for row in res:
         listOfTags.extend(row[5])
     listOfTags.extend(tags)
+    listOfTags.sort()
     cur.execute("UPDATE user SET tags = ({})".format(",".join(listOfTags)))
 
 def add_user_to_group(user_id, group):
