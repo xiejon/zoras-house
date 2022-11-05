@@ -9,9 +9,11 @@ const initialState = {
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   const response = await axios.get("http://127.0.0.1:5000/search");
-  console.log(response.data)
-  return response.data;
+  console.log(response.data.data)
+  return response.data.data;
 });
+
+// user(id, isAdmin, location, name, email, tags, count_of_event)"
 
 const usersSlice = createSlice({
   name: "users",
@@ -24,7 +26,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.groups = action.payload;
+        state.users = action.payload;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.status = "failed";

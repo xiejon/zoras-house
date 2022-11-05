@@ -34,10 +34,10 @@ const DirectoryScreen = () => {
   useEffect(() => {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
-      console.log(users)
     }
   }, [dispatch, usersStatus]);
 
+//   user(id, isAdmin, location, name, email, tags, count_of_event)"
   return (
     <>
       <NavbarComponent />
@@ -54,8 +54,8 @@ const DirectoryScreen = () => {
         </Form>
 
         <ListGroup className="mt-2">
-          {sample.map((user) => {
-            return <DirectoryItem key={user.id} name={user.name} />;
+          {usersStatus === "succeeded" && users.map((user) => {
+            return <DirectoryItem key={user[0]} name={user[3]} />;
           })}
         </ListGroup>
       </Container>
