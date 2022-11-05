@@ -1,18 +1,10 @@
 from flask import Flask, request
 from flask_cors import CORS
 import pull_data
-import json
-import requests
 import push_db
 
 app = Flask(__name__)
 CORS(app)
-
-global user_id
-
-def set_user_id(id_number):
-    user_id = id_number
-    return user_id
 
 @app.route("/login_path", methods = ["GET", "POST"])
 def login():
@@ -85,6 +77,35 @@ def get_user_data():
     }
     
     return response_body
+
+@app.route("/filteredUsers", methods=["GET, POST"])
+def get_filterd_users():
+    read_filters = request.json["tags"]
+    listOfUserIds = pull_data.pull_users_by_tags(read_filters)
+
+    response_body = []
+    for id in listOfUserIds:
+        response_body.append({k: v for k, v in enumerate(pull_data.pull_user_info(id))})
+    
+    return response_body
+@app.route("/find_people", methods = ["GET", "POST"])
+def get_profile_groups():
+    read_in = request.json
+    id = int(read_in["user_id"])
+    listOfGroups = []
+    groups = pull_data.pull_user_groups(id)
+    for group in groups:
+        listOfGroups.append({"group_name": group[0], "group_id": group[1]})
+    
+    user_info = pull_data.pull_user_info(id)
+    
+    response = {
+        "data": listOfGroups,
+        "user_info": user_info
+    }
+    
+    return response
+
 
 if __name__ == "__main__":
     app.run(debug = True)

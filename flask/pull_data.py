@@ -15,6 +15,17 @@ def pull_all_users():
     return ret
 
 
+def get_users_and_groups(user_id):
+    list_of_groups =[]
+    res = cur.execute("SELECT group_name, group_id FROM GROUPS WHERE user_id = {}".format(user_id))
+    for row in res:
+        list_of_groups.append(row)
+    return list_of_groups
+    
+    
+    
+
+
 def pull_user_groups(user_id):
     list_of_groups =[]
     res = cur.execute("SELECT group_name, group_id FROM GROUPS WHERE user_id = {}".format(user_id))  
@@ -36,6 +47,38 @@ def pull_user_info(user_id):
     for row in res:
         return list(row)
 
+# returns all users who fall under specific list of groups
+def pull_users_by_groups(groups):
+    listOfUsers = []
+    for i in range(len(groups)):
+        res = cur.execute("SELECT name FROM groups, user WHERE user.id = groups.user_id and groups.group_name = '{}'".format(groups[i]))
+        result = res.fetchone()
+        if result:
+            listOfUsers.append(result[0])
+    return listOfUsers
+
+# returns all users who have specific list of tags
+def pull_users_by_tags(tags):
+    res = None
+    listOfUsers = []
+    if not tags:
+        res = cur.execute("SELECT id FROM user")
+        for row in res:
+            listOfUsers.append(row[0])
+    else:
+        res = cur.execute("SELECT id, tags FROM user")
+        for row in res:
+            count = 0
+            tmp = row[-1].split(", ")
+            for tag in tmp:
+                if tag in tags:
+                    count += 1
+            if count >= len(tags):
+                listOfUsers.append(row[0])
+    return listOfUsers
+            
+
 
 list_of_chats = pull_all_users()
-print(json.dumps(list_of_chats))
+list_of_users = pull_users_by_tags([])
+print(json.dumps(list_of_users))

@@ -15,16 +15,16 @@ cur.execute("CREATE TABLE chats(id, user_id,message)")
 #fill dummy data
 cur.execute("""
     INSERT INTO user VALUES
-        (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "", "0"),
-        (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood", "4")
+        (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 0),
+        (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 4)
 """)
 
 # #fill dummy data
 cur.execute("""
     INSERT INTO groups VALUES
-        (1, 1, "Motherhood"),
-        (1, 2, "Motherhood"),
-        (1,2,"International Relations")
+        (1, 1, "Women In Tech"),
+        (1, 2, "Women In Tech"),
+        (1,2,"Entrepreneur")
         
 """)
 
@@ -38,10 +38,3 @@ cur.execute("""
 
 conn.commit()
 conn.close()
-
-
-
-
-
-
-
