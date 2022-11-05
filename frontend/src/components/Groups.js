@@ -3,24 +3,35 @@ import GroupItem from "./GroupItem";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+// import {
+//   fetchGroups,
+//   getAllGroups,
+//   getGroupsStatus,
+//   getGroupsError,
+// } from "../redux/groupsSlice";
 import {
-  fetchGroups,
-  getAllGroups,
-  getGroupsStatus,
-  getGroupsError,
-} from "../redux/groupsSlice";
+    fetchUsers,
+    getAllUsers,
+    getUsersStatus,
+    getUsersError,
+  } from "../redux/usersSlice";
+import { getCurrUser } from "../redux/usersSlice";
 
 const Groups = () => {
-  const dispatch = useDispatch();
-  const groups = useSelector(getAllGroups);
-  const groupsStatus = useSelector(getGroupsStatus);
-  const groupsError = useSelector(getGroupsError);
+    const dispatch = useDispatch();
+    const currUser = useSelector(getCurrUser);
+    const usersStatus = useSelector(getUsersStatus);
+  
+    useEffect(() => {
+      if (usersStatus === "idle") {
+        dispatch(fetchUsers());
+      }
+    }, [dispatch, usersStatus]);
 
-  useEffect(() => {
-    if (groupsStatus === "idle") {
-      dispatch(fetchGroups());
+    let userGroups;
+    if (usersStatus === "succeeded") {
+        userGroups = currUser.user_groups
     }
-  }, [dispatch, groupsStatus]);
 
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
@@ -28,8 +39,8 @@ const Groups = () => {
         Groups
       </Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
-        {groupsStatus === "succeeded" &&
-          groups.map((group) => {
+        {usersStatus === "succeeded" &&
+          userGroups.map((group) => {
             return (
               <GroupItem
                 key={group.group_id}
