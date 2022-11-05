@@ -34,8 +34,8 @@ def get_search_results():
 
 @app.route("/data", methods=["GET","POST"])
 def get_user_data():
-    user_id = 1
-
+    #user_id = 1
+    user_id = int(request.json["user_id"])
     listOfGroups = []
     user_groups = pull_data.pull_user_groups(user_id)
     for group in user_groups:
