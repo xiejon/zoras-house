@@ -76,5 +76,24 @@ def get_user_data():
     
     return response_body
 
+@app.route("/find_people", methods = ["GET", "POST"])
+def get_profile_groups():
+    read_in = request.json
+    id = int(read_in["user_id"])
+    listOfGroups = []
+    groups = pull_data.pull_user_groups(id)
+    for group in groups:
+        listOfGroups.append({"group_name": group[0], "group_id": group[1]})
+    
+    user_info = pull_data.pull_user_info(id)
+    
+    response = {
+        "data": listOfGroups,
+        "user_info": user_info
+    }
+    
+    return response
+
+
 if __name__ == "__main__":
     app.run(debug = True)
