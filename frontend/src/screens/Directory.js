@@ -8,7 +8,7 @@ import {
   getAllUsers,
   getUsersStatus,
   getUsersError,
-} from "../redux/groupsSlice";
+} from "../redux/usersSlice";
 
 const sample = [
   {
@@ -34,6 +34,7 @@ const DirectoryScreen = () => {
   useEffect(() => {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
+      console.log(users)
     }
   }, [dispatch, usersStatus]);
 

@@ -2,38 +2,39 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  groups: [],
+  users: [],
   status: "idle",
   error: null,
 };
 
-export const fetchGroups = createAsyncThunk("tasks/fetchGroups", async () => {
-  const response = await axios.get("http://127.0.0.1:5000/data");
-  return response.data.user_groups;
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
+  const response = await axios.get("http://127.0.0.1:5000/search");
+  console.log(response.data)
+  return response.data;
 });
 
-const groupsSlice = createSlice({
-  name: "groups",
+const usersSlice = createSlice({
+  name: "users",
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchGroups.pending, (state, action) => {
+      .addCase(fetchUsers.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(fetchGroups.fulfilled, (state, action) => {
+      .addCase(fetchUsers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.groups = action.payload;
       })
-      .addCase(fetchGroups.rejected, (state, action) => {
+      .addCase(fetchUsers.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-export const getAllUsers = (state) => state.groups.groups;
-export const getUsersStatus = (state) => state.groups.status;
-export const getUsersError = (state) => state.groups.error;
+export const getAllUsers = (state) => state.users.users;
+export const getUsersStatus = (state) => state.users.status;
+export const getUsersError = (state) => state.users.error;
 
-export default groupsSlice.reducer;
+export default usersSlice.reducer;
