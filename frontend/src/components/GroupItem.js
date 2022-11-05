@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
 import GroupScreen from "../screens/GroupScreen";
 
-const GroupItem = ({ groupId, userId, groupName }) => {
+const GroupItem = ({ groupName }) => {
   const link = `/groups/${groupName}`;
   return (
     <Card className="w-100">
