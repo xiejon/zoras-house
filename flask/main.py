@@ -1,8 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
 import pull_data
-import json
-import requests
 import push_db
 
 app = Flask(__name__)
@@ -62,6 +60,20 @@ def get_filterd_users():
         response_body.append({k: v for k, v in enumerate(pull_data.pull_user_info(id))})
     
     return response_body
+
+
+@app.route("/filteredUsers", methods=["GET, POST"])
+def get_filterd_users():
+    read_filters = request.json["tags"]
+    listOfUserIds = pull_data.pull_users_by_tags(read_filters)
+
+    response_body = []
+    for id in listOfUserIds:
+        response_body.append({k: v for k, v in enumerate(pull_data.pull_user_info(id))})
+    
+    return response_body
+
+
 
 if __name__ == "__main__":
     app.run(debug = True)

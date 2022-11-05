@@ -51,11 +51,11 @@ def pull_users_by_tags(tags):
     res = None
     listOfUsers = []
     if not tags:
-        res = cur.execute("SELECT name FROM user")
+        res = cur.execute("SELECT id FROM user")
         for row in res:
             listOfUsers.append(row[0])
     else:
-        res = cur.execute("SELECT name, tags FROM user")
+        res = cur.execute("SELECT id, tags FROM user")
         for row in res:
             count = 0
             tmp = row[-1].split(", ")
