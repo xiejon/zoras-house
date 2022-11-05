@@ -1,5 +1,5 @@
 import sqlite3
-conn = sqlite3.connect('database.db')
+conn = sqlite3.connect('database.db', check_same_thread=False)
 cur = conn.cursor()
 
 
@@ -8,7 +8,7 @@ def pull_user_groups(user_id):
     list_of_groups =[]
     res = cur.execute("SELECT group_name, group_id FROM GROUPS WHERE user_id = {}".format(user_id))  
     for row in res:
-        list_of_groups.append(row[0])
+        list_of_groups.append(row)
     return list_of_groups
  
 
@@ -25,9 +25,8 @@ def pull_user_info(user_id):
     for row in res:
         return list(row)
     
-    
-list_of_chats = pull_user_info(1)
-
+list_of_chats = pull_user_groups(1)
+print(list_of_chats)
 
 
 
