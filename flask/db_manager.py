@@ -23,7 +23,9 @@ cur.execute("""
 cur.execute("""
     INSERT INTO groups VALUES
         (1, 1, "Motherhood"),
-        (1, 2, "Motherhood")
+        (1, 2, "Motherhood"),
+        (1,2,"International Relations")
+        
 """)
 
 #fill in some dummy data
