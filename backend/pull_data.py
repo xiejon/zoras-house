@@ -22,10 +22,10 @@ def pull_user_chats(user_id):
 
 def pull_user_info(user_id):
     res = cur.execute("SELECT * from USER where id = {}".format(user_id))
-    for row in res:
-        return list(row)
+    out = res.fetchall()[0]
+    return {"id": out[0], "isAdmin": out[1], "location":out[2], "name":out[3], "email":out[4], "tags":out[5], "count_of_event":out[6]}
     
-list_of_chats = pull_user_groups(1)
+list_of_chats = pull_user_info(1)
 print(list_of_chats)
 
 
