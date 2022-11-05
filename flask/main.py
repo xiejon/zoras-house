@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import pull_data
 import push_db
-# from naturallanguage import mostMostSimilar
+from naturallanguage import mostMostSimilar
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +34,7 @@ def login():
         #     elif d['group_name'] == "master"
             
         # groupBank = ['student', 'entrepreneur', 'career', 'single', 'married', 'mother', 'hobby', 'finance', 'identity']
-        list_of_categories =  ['Entrepreneur', 'Family', 'Mother', 'Career', "Technology", "Data Science"]
+        list_of_categories =  ['entrepreneur', 'family', 'mother', 'career', "technology", "data science"]
         
         response_body = {
             "username": out[0],

@@ -1,8 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import GroupItem from "./GroupItem";
-import { getCurrUser, getCurrUserStatus } from "../redux/usersSlice";
-import { useSelector } from "react-redux";
 
 const sample = [
   {
@@ -23,24 +21,17 @@ const sample = [
 ];
 
 const RecommendedGroups = (props) => {
-  const currUser = useSelector(getCurrUser);
-  const currUserStatus = useSelector(getCurrUserStatus);
-
-  let groups;
-  if (currUserStatus === "succeeded") {
-    groups = currUser.list_of_categories
-  }
-
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
       <Card.Title className="mt-2">Recommended</Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
-        {currUserStatus === "succeeded" && groups.map((group, index) => {
-          console.log(group)
+        {sample.map((group) => {
           return (
             <GroupItem
-              key={index}
-              groupName={group}
+              key={group.group_id}
+              userId={group.user_id}
+              groupId={group.group_id}
+              groupName={group.group_name}
             />
           );
         })}
