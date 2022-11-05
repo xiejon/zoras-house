@@ -77,7 +77,7 @@ const DirectoryScreen = () => {
         <Form className="d-flex" onSubmit={handleSubmit}>
           <Form.Control
             type="search"
-            placeholder="Search"
+            placeholder="Enter a tag"
             className="me-2"
             aria-label="Search"
             value={input}

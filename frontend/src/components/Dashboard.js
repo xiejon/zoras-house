@@ -14,6 +14,7 @@ import {
   getCurrUserStatus,
   getCurrUser,
 } from "../redux/usersSlice";
+import RecommendedInput from "./RecommendedInput";
 
 const Dashboard = (props) => {
   const currUser = useSelector(getCurrUser);
@@ -21,12 +22,12 @@ const Dashboard = (props) => {
 
   let now;
   if (currUserStatus === "succeeded") {
-    now = currUser.user_info[7]
+    now = currUser.user_info[7];
   }
   return (
     <Container className="dashboard-container">
       <Row>
-        <Col className="mt-3 dashboard-col d-flex flex-column h-100  gap-2">
+        <Col className="mt-3 mb-3 dashboard-col d-flex flex-column h-100  gap-2">
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
               <Card.Title className="mt-2">Upcoming Events</Card.Title>
@@ -47,13 +48,16 @@ const Dashboard = (props) => {
               </Card.Body>
             </Card>
           </Row>
+          <Row>
+            <RecommendedInput />
+          </Row>
         </Col>
 
-        <Col className=" mt-3 d-flex h-100vh justify-content-center gap-2">
+        <Col className=" mt-3 mb-3 d-flex h-100vh justify-content-center gap-2">
           <RecommendedGroups />
         </Col>
 
-        <Col className=" mt-3 d-flex flex-column gap-2">
+        <Col className=" mt-3 mb-3 d-flex flex-column gap-2">
           <Row>
             <Groups />
           </Row>
