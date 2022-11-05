@@ -13,10 +13,11 @@ const LoginForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("", {
-        email,
-        password,
+      const { data } = await axios.post("http://127.0.0.1:5000/login_path", {
+        username: email,
+        password: password
       });
+
       setUser(data);
       navigate("/home");
     } catch (err) {
@@ -25,7 +26,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler} className="d-flex flex-column">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -45,7 +46,7 @@ const LoginForm = () => {
         />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        Sign In
       </Button>
     </Form>
   );

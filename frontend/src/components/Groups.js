@@ -24,7 +24,7 @@ const Groups = () => {
 
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Title className="d-flex align-items-center justify-content-center">
+      <Card.Title className="mt-2 d-flex align-items-center justify-content-center">
         Groups
       </Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">

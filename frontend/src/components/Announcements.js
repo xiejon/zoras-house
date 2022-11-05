@@ -4,7 +4,7 @@ import { Card, ListGroup, Badge } from "react-bootstrap";
 const Announcements = (props) => {
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Title>Announcements</Card.Title>
+      <Card.Title className="mt-2">Announcements</Card.Title>
       <Card.Body>
         <ListGroup as="ol" numbered>
           <ListGroup.Item
