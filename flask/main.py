@@ -43,8 +43,7 @@ def login():
             "user_info": user_info
         }
         
-        return response_body
-        return out, 200
+        return response_body,200
     
 
 #this function will receive inputs from the front end and return 
