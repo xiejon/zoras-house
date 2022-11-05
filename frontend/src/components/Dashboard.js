@@ -5,13 +5,24 @@ import RecommendedGroups from "./RecommendedGroups";
 import "./Dashboard.css";
 import CalendarComponent from "./CalendarComponent";
 import Announcements from "./Announcements";
-import {useDispatch, useSelector} from 'react-redux'
-import { fetchUsers, getAllUsers, getUsersError, getUsersStatus } from "../redux/usersSlice";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchUsers,
+  getAllUsers,
+  getUsersError,
+  getUsersStatus,
+  getCurrUserStatus,
+  getCurrUser,
+} from "../redux/usersSlice";
 
 const Dashboard = (props) => {
-  
-  const now = 10;
+  const currUser = useSelector(getCurrUser);
+  const currUserStatus = useSelector(getCurrUserStatus);
+
+  let now;
+  if (currUserStatus === "succeeded") {
+    now = currUser.user_info[7]
+  }
   return (
     <Container className="dashboard-container">
       <Row>
@@ -25,12 +36,15 @@ const Dashboard = (props) => {
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
               <Card.Title className="mt-2">Zora Tokens</Card.Title>
-              <ProgressBar
-                className="w-100 mb-2"
-                now={now}
-                label={`${now} visits`}
-                max="20"
-              />
+              <Card.Body>
+                <p>You are {20 - now} visits away from a free prize!</p>
+                <ProgressBar
+                  className="w-100 mb-2"
+                  now={now}
+                  label={`${now} visits`}
+                  max="20"
+                />
+              </Card.Body>
             </Card>
           </Row>
         </Col>

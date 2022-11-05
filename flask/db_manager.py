@@ -17,6 +17,7 @@ cur.execute("""
     INSERT INTO user VALUES
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 0),
         (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 4)
 =======
@@ -27,6 +28,10 @@ cur.execute("""
         (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 0),
         (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 4)
 >>>>>>> 2825bc0 (pull by tags and by groups have been extensively tested)
+=======
+        (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 12),
+        (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 15)
+>>>>>>> 87524cbb789bff3b8b2bee632404489bd81d7348
 """)
 
 # #fill dummy data
@@ -34,7 +39,14 @@ cur.execute("""
     INSERT INTO groups VALUES
         (1, 1, "Women In Tech"),
         (1, 2, "Women In Tech"),
-        (1,2,"Entrepreneur")
+        (1,2,"Entrepreneur"),
+        (2,1,"Women in Medicine"),
+        (3,1 ,"BIPOC in Politics"),
+        (2,1,"Women in Medicine"),
+        (3,1, "BIPOC in Politics"),
+        (1,1,"Entrepreneur"),
+        (4,2, "Society of Hispanic Engineers"),
+        (4,1, "Society of Hispanic Engineers")
         
 """)
 

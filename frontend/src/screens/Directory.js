@@ -9,6 +9,7 @@ import {
   getUsersStatus,
   getUsersError,
 } from "../redux/usersSlice";
+import axios from "axios";
 
 const sample = [
   {
@@ -31,31 +32,64 @@ const DirectoryScreen = () => {
   const usersStatus = useSelector(getUsersStatus);
   const usersError = useSelector(getUsersError);
 
+  const [isFilteredSearch, setIsFilteredSearch] = React.useState(false);
+  const [filteredUsers, setFilteredUsers] = React.useState([]);
+
+  const [input, setInput] = React.useState("");
+
   useEffect(() => {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
     }
   }, [dispatch, usersStatus]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://127.0.0.1:5000/filteredUsers", {
+        tags: [input],
+      })
+      .then((res) => {
+        setIsFilteredSearch(true);
+        setFilteredUsers(res.data);
+      });
+  };
+
+  let content;
+  if (isFilteredSearch) {
+    content = filteredUsers.map((user) => {
+      return <DirectoryItem key={user[0]} name={user[3]} />;
+    });
+  } else {
+    content =
+      usersStatus === "succeeded" &&
+      users.map((user) => {
+        return <DirectoryItem key={user[0]} name={user[3]} />;
+      });
+  }
+
   return (
     <>
       <NavbarComponent />
       <Container className="d-flex flex-column align-items-center justify-content-center">
         <h1 className="mt-2">Explore</h1>
-        <Form className="d-flex">
+        <Form className="d-flex" onSubmit={handleSubmit}>
           <Form.Control
             type="search"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-success" type="submit">
+            Search
+          </Button>
         </Form>
 
         <ListGroup className="mt-2">
-          {usersStatus === "succeeded" && users.map((user) => {
-            return <DirectoryItem key={user[0]} name={user[3]} />;
-          })}
+          {content}
         </ListGroup>
       </Container>
     </>
