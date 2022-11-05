@@ -24,12 +24,19 @@ def add_user_to_group(user_id, group):
         break
 
 def login(email, password):
-    res = cur.execute("SELECT * FROM user WHERE user.email = '{}' & user.password = '{}'".format(email, password))
-    if res.fetchall() == 0:
-        raise Exception()
-    print(res)
-    for row in res:
-        return {"email": res[4], "password": res[5]}
+    print(email)
+    print(password)
+    print("SELECT * FROM user WHERE user.email = '{}'".format(email))
+    print("SELECT email FROM user WHERE name = \"Jane Doe\"")
+    res = cur.execute("SELECT * FROM user WHERE email = '{}' and password = '{}'".format(email,password))
+    #res = cur.execute("SELECT * FROM user")
+    result = res.fetchone()
+    
+    if result is None:
+        return -1
+    else:
+        return {"username":result[4],"password":result[5]}
+        
     
 
     
