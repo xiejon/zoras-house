@@ -54,12 +54,12 @@ const Dashboard = (props) => {
         </Col>
 
         <Col className=" mt-3 mb-3 d-flex h-100vh justify-content-center gap-2">
-          <RecommendedGroups />
+          <Groups />
         </Col>
 
         <Col className=" mt-3 mb-3 d-flex flex-column gap-2">
           <Row>
-            <Groups />
+            <RecommendedGroups />
           </Row>
           <Row>
             <Announcements />

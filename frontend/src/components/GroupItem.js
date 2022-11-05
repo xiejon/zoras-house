@@ -8,7 +8,9 @@ const GroupItem = ({ groupId, userId, groupName }) => {
   return (
     <Card className="w-100">
       <Card.Title className="d-flex justify-content-center align-items-center">
-        <Link to={link}>{groupName}</Link>
+        <Link to={link} style={{ textDecoration: "none" }} className="mt-1">
+          {groupName}
+        </Link>
       </Card.Title>
     </Card>
   );

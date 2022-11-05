@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import pull_data
 import push_db
-from naturallanguage import mostMostSimilar
+# from naturallanguage import mostMostSimilar
 
 app = Flask(__name__)
 CORS(app)
