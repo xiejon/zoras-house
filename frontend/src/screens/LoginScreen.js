@@ -1,12 +1,13 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import LoginForm from "../components/LoginForm";
 import "./LoginScreen.css";
+import SvgComponent from "../components/Logo";
 
 const LoginScreen = () => {
-
   return (
-    <Container className="login-container d-flex justify-content-center align-items-center ">
+    <Container className="login-container d-flex flex-column align-items-center ">
+      <SvgComponent className="logo"/>
       <LoginForm />
     </Container>
   );
