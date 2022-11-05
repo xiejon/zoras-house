@@ -14,24 +14,23 @@ import {
     getAllUsers,
     getUsersStatus,
     getUsersError,
+    getCurrUserStatus
   } from "../redux/usersSlice";
 import { getCurrUser } from "../redux/usersSlice";
 
 const Groups = () => {
     const dispatch = useDispatch();
     const currUser = useSelector(getCurrUser);
-    const usersStatus = useSelector(getUsersStatus);
-  
-    useEffect(() => {
-      if (usersStatus === "idle") {
-        dispatch(fetchUsers());
-      }
-    }, [dispatch, usersStatus]);
+    const currUserStatus = useSelector(getCurrUserStatus);
 
     let userGroups;
-    if (usersStatus === "succeeded") {
+    if (currUserStatus === "succeeded") {
         userGroups = currUser.user_groups
     }
+
+    useEffect(() => {
+        console.log(currUser)
+    }, [])
 
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
@@ -39,7 +38,7 @@ const Groups = () => {
         Groups
       </Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
-        {usersStatus === "succeeded" &&
+        {currUserStatus === "succeeded" &&
           userGroups.map((group) => {
             return (
               <GroupItem
