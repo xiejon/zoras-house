@@ -5,3 +5,11 @@
 .dashboard-col {
     min-height: 85vh;
 }
+
+.recommendedInput {
+    min-height: 20vh;
+}
+
+.recommended-groups {
+    min-height: 45vh;
+}

@@ -37,7 +37,7 @@ const Announcements = (props) => {
           >
             <div className="ms-2 me-auto">
               <div className="fw-bold">Zora Book Club</div>
-              BYOB
+              BYOB (Bring your own book!)
             </div>
             <Badge bg="primary" pill>
               14

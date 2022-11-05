@@ -8,13 +8,13 @@ const RecommendedInput = (props) => {
     e.preventDefault();
   };
   return (
-    <Card className="d-flex justify-content-center align-items-center">
-      <Card.Title className="mt-2">What's your story?</Card.Title>
+    <Card className="d-flex flex-column justify-content-center align-items-center">
+      <Card.Title className="mb-3">What's your story?</Card.Title>
       <Form className="d-flex mb-2" onSubmit={handleSubmit}>
         <Form.Control
           type="search"
           placeholder="Part-time cat mom..."
-          className="me-2"
+          className="me-2 w-100"
           aria-label="Search"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}

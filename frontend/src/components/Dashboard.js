@@ -27,7 +27,7 @@ const Dashboard = (props) => {
   return (
     <Container className="dashboard-container">
       <Row>
-        <Col className="mt-3 mb-3 dashboard-col d-flex flex-column h-100  gap-2">
+        <Col className="mt-3 mb-3 dashboard-col d-flex flex-column h-100 justify-content-between gap-2">
           <Row>
             <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
               <Card.Title className="mt-2">Upcoming Events</Card.Title>
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
               </Card.Body>
             </Card>
           </Row>
-          <Row>
+          <Row className="recommendedInput">
             <RecommendedInput />
           </Row>
         </Col>
@@ -57,8 +57,8 @@ const Dashboard = (props) => {
           <Groups />
         </Col>
 
-        <Col className=" mt-3 mb-3 d-flex flex-column gap-2">
-          <Row>
+        <Col className=" mt-3 mb-3 d-flex flex-column gap-2 justify-content-between">
+          <Row className="recommended-groups">
             <RecommendedGroups />
           </Row>
           <Row>
