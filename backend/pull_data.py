@@ -5,7 +5,7 @@ cur = conn.cursor()
 
 #this function will output all users:
 def pull_all_users():
-    res = cur.execute("SELECT * from USERS")
+    res = cur.execute("SELECT * from USER")
     print(res)
 
 
