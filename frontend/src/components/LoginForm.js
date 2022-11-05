@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { setUser } from "../redux/usersSlice";
-import { useNavigate } from "./react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const navigate = useNavigate();
