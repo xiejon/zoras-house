@@ -7,7 +7,7 @@ const CalendarComponent = (props) => {
 
   return (
     <div>
-      <Calendar onChange={onChange} value={value} />
+      <Calendar className="mb-2" onChange={onChange} value={value} />
     </div>
   );
 };

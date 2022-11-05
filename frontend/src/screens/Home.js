@@ -7,7 +7,9 @@ const HomeScreen = () => {
   return (
     <>
       <NavbarComponent />
-    <main style={{ minHeight: "85vh" }}><Dashboard /></main>
+      <main style={{ minHeight: "85vh" }}>
+        <Dashboard />
+      </main>
     </>
   );
 };

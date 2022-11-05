@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getCurrUser } from "./usersSlice";
+import { useSelector } from "react-redux";
 
 const initialState = {
   groups: [],

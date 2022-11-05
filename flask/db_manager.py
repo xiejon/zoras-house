@@ -22,8 +22,10 @@ cur.execute("""
 # #fill dummy data
 cur.execute("""
     INSERT INTO groups VALUES
-        (1, 1, "Motherhood"),
-        (1, 2, "Motherhood")
+        (1, 1, "Women In Tech"),
+        (1, 2, "Women In Tech"),
+        (1,2,"Entrepreneur")
+        
 """)
 
 #fill in some dummy data
@@ -36,10 +38,3 @@ cur.execute("""
 
 conn.commit()
 conn.close()
-
-
-
-
-
-
-

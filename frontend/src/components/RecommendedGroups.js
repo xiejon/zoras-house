@@ -23,7 +23,7 @@ const sample = [
 const RecommendedGroups = (props) => {
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Title>Recommended</Card.Title>
+      <Card.Title className="mt-2">Recommended</Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
         {sample.map((group) => {
           return (

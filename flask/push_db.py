@@ -36,7 +36,7 @@ def login(email, password):
     if result is None:
         return -1
     else:
-        return {"username":result[4],"password":result[5]}
+        return [result[4],result[5],result[0]]
         
     
 

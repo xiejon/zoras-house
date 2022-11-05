@@ -3,33 +3,43 @@ import GroupItem from "./GroupItem";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+// import {
+//   fetchGroups,
+//   getAllGroups,
+//   getGroupsStatus,
+//   getGroupsError,
+// } from "../redux/groupsSlice";
 import {
-  fetchGroups,
-  getAllGroups,
-  getGroupsStatus,
-  getGroupsError,
-} from "../redux/groupsSlice";
+    fetchUsers,
+    getAllUsers,
+    getUsersStatus,
+    getUsersError,
+    getCurrUserStatus
+  } from "../redux/usersSlice";
+import { getCurrUser } from "../redux/usersSlice";
 
 const Groups = () => {
-  const dispatch = useDispatch();
-  const groups = useSelector(getAllGroups);
-  const groupsStatus = useSelector(getGroupsStatus);
-  const groupsError = useSelector(getGroupsError);
+    const dispatch = useDispatch();
+    const currUser = useSelector(getCurrUser);
+    const currUserStatus = useSelector(getCurrUserStatus);
 
-  useEffect(() => {
-    if (groupsStatus === "idle") {
-      dispatch(fetchGroups());
+    let userGroups;
+    if (currUserStatus === "succeeded") {
+        userGroups = currUser.user_groups
     }
-  }, [dispatch, groupsStatus]);
+
+    useEffect(() => {
+        console.log(currUser)
+    }, [])
 
   return (
     <Card className="w-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Title className="d-flex align-items-center justify-content-center">
+      <Card.Title className="mt-2 d-flex align-items-center justify-content-center">
         Groups
       </Card.Title>
       <Card.Body className="w-100 d-flex flex-column gap-1">
-        {groupsStatus === "succeeded" &&
-          groups.map((group) => {
+        {currUserStatus === "succeeded" &&
+          userGroups.map((group) => {
             return (
               <GroupItem
                 key={group.group_id}
