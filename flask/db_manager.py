@@ -16,12 +16,17 @@ cur.execute("CREATE TABLE chats(id, user_id,message)")
 cur.execute("""
     INSERT INTO user VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
         (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 0),
         (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 4)
 =======
         (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "", 0),
         (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood", 4)
 >>>>>>> a93ca6b (added pull functions for filtering users)
+=======
+        (1, 0, "1111 Polaris Parkway", "Jane Doe", "jd@csf.org", "somepwd", "bookclub", 0),
+        (2, 0, "11 Polaris Parkway", "Jane Doeee", "jde@csf.org", "somepwd123", "motherhood, bookclub", 4)
+>>>>>>> 2825bc0 (pull by tags and by groups have been extensively tested)
 """)
 
 # #fill dummy data
