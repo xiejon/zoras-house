@@ -6,6 +6,12 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+#this function will receive inputs from the front end and return 
+@app.route("/search", methods = ["GET", "POST"])
+def get_search_results():
+  return  
+    
+
 
 @app.route("/data", methods=["GET","POST"])
 def get_user_data():

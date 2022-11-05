@@ -26,7 +26,7 @@ cur.execute("""
         (1, 2, "Motherhood")
 """)
 
-
+#fill in some dummy data
 cur.execute("""
     INSERT INTO chats VALUES
         (1, 1, "HI i am a user"),

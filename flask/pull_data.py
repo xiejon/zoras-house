@@ -1,11 +1,18 @@
 import sqlite3
+import json
 conn = sqlite3.connect('database.db', check_same_thread=False)
 cur = conn.cursor()
 
 #this function will output all users:
 def pull_all_users():
     res = cur.execute("SELECT * from USER")
-    print(res)
+    out = []
+    for row in res:
+        out.append(list(row))
+    ret = []
+    for lst in out:
+        ret.append({k: v for k, v in enumerate(lst)})
+    return ret
 
 
 def pull_user_groups(user_id):
@@ -29,5 +36,5 @@ def pull_user_info(user_id):
     for row in res:
         return list(row)
     
-list_of_chats = pull_user_groups(1)
-print(list_of_chats)
+list_of_chats = pull_all_users()
+print(json.dumps(list_of_chats))
