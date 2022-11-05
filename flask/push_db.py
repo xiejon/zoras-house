@@ -23,4 +23,10 @@ def add_user_to_group(user_id, group):
         cur.execute("INSERT INTO group VALUES ({})".format(",".join([res[0], user_id, group])))
         break
 
+def login(email, password):
+    res = cur.execute("SELECT * WHERE user.email = '{}' & user.password = '{}'".format(email, password))
+    if res.fetchall[0] == 0:
+        return "/"
+    return "/homepage"
+
     
