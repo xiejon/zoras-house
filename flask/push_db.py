@@ -17,7 +17,7 @@ def add_tags_to_user(user_id, tags):
 
 def add_user_to_group(user_id, group):
     res = cur.execute("SELECT user_id, group_id FROM groups WHERE user_id == {}".format(user_id))
-    if res.fetchall[0] == 0:
+    if res.fetchall()[0] == 0:
         return
     for row in res:
         cur.execute("INSERT INTO group VALUES ({})".format(",".join([res[0], user_id, group])))
@@ -25,7 +25,7 @@ def add_user_to_group(user_id, group):
 
 def login(email, password):
     res = cur.execute("SELECT * WHERE user.email = '{}' & user.password = '{}'".format(email, password))
-    if res.fetchall[0] == 0:
+    if res.fetchall()[0] == 0:
         return "/"
     return "/homepage"
 
