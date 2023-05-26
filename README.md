@@ -1,19 +1,20 @@
-# Team 16 Project: **Zora's House**
+# JPMorgan Chase Code For Good Hackathon Team 16: **Zora's House**
+
+## About: 
+Zora's House is a "non-profit coworking and community space built by and for women and gender expansive people of color."
+
+We had 24 hours to build a web platform to allow Zora's House community members to connect with each other.
 
 ## Challenge:
 
-*How* can technology help [Zora's House](https://zorashouse.com/) bring the community and mission of a physical coworking space to the virtual setting?
-*How* could community members better connect with each other and share resources online? 
-*How* could Zora's House programming be better shared, and accessible both online and offline? 
-*How* can Zora's House continue to promote and increase the reach of their mission in scale? 
-*How* can Zora's House incentivize community memebrs to stay involved in their programmming?
+- Helping [Zora's House](https://zorashouse.com/) bring the community and mission of a physical coworking space to a virtual setting
+- Encouraging community members to connect with each other and share resources online
+- Making programming accessible
+- Incentivizing community members to stay engaged on the platform
 
-## Dependencies:
+## Technologies:
 
-Languages: HTML/CSS, Javascript, Python
-
-Frameworks: React.js, Flask
-
-Other Technologies: Jupyter Notebook, Sqlite
+Frontend: React.js, Bootstrap
+Backend: Flask, SQLite
 
 
